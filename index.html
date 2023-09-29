@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KidsGames</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header></header>
+    <main>
+        <h1>Kids Game, <strong>Learning and Having Fun</strong></h1>
+        <p>It is time to paint, select the favorite color and start . 
+        <br>
+        
+    </main>
+    Select the color <input type = "color">
+    <button type="button" onClick="window.location.reload();">Try again</button>
+
+    <canvas width="600" height="400"></canvas>
+    <br>
+    <script>
+        var paleta = document.querySelector("input")
+        var tela = document.querySelector('canvas');
+        var pincel = tela.getContext('2d');
+        pincel.fillStyle = 'grey';
+        pincel.fillRect(0, 0, 600, 400);
+        var desenha =false;
+
+        function skip() {
+            document.write("<br>");
+            document.write("<br>");
+            }
+        
+        function desenhaCirculo(evento) {
+            if(desenha){
+            var x = evento.pageX - tela.offsetLeft;
+            var y = evento.pageY - tela.offsetTop;
+            pincel.fillStyle = paleta.value;
+            pincel.beginPath();
+            pincel.arc(x, y, 10, 0, 2 * 3.14);
+            pincel.fill();
+            }
+            console.log(x + "," + y)
+        }
+        tela.onmousemove = desenhaCirculo;
+    
+    
+        function habilitaDesenhar() {
+    
+            desenha = true;
+        }
+    
+        function desabilitaDesenhar() {
+            desenha = false;
+        }
+    
+        tela.onmousedown = habilitaDesenhar;
+        tela.onmouseup = desabilitaDesenhar;
+     
+    </script>
+
+    <br>
+    <br>
+    <footer>Cloud Girls - Turma 10 - 2023</footer>
+    
+</body>
+</html>
